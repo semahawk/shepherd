@@ -3,32 +3,36 @@ Shepherd
 
 <table>
 	<tr>
-		<td>**Homepage**</td>
-		<td>[http://semahawk.github.com/shepherd](http://semahawk.github.com/shepherd)</td>
+		<td><b>Homepage</b></td>
+		<td><a href="http://semahawk.github.com/shepherd">http://semahawk.github.com/shepherd</a></td>
 	</tr>
 	<tr>
-		<td>**Author**</td>
+		<td><b>Author</b></td>
 		<td>Szymon Urbaś (szymon dot urbas at yahoo dot com)</td>
 	</tr>
 	<tr>
-		<td>**Copyright**</td>
+		<td><b>Copyright</b></td>
 		<td>2011</td>
 	</tr>
 	<tr>
-		<td>**License**</td>
+		<td><b>License</b></td>
 		<td>MIT</td>
 	</tr>
 	<tr>
-		<td>**Latest version**</td>
+		<td> </td>		
+		<td> </td>		
+	</tr>
+	<tr>
+		<td><b>Latest version</b></td>
 		<td>0.1.0</td>
 	</tr>
 	<tr>
-		<td>**Release date**</td>
+		<td><b>Release date</b></td>
 		<td>June 18th, 2011</td>
 	</tr>
 	<tr>
-		<td>**Stage**</td>
-		<td>*Development*</td>
+		<td><b>Stage</b></td>
+		<td><i>Development</i></td>
 	</tr>
 </table>
 
