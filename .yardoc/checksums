@@ -1,0 +1,6 @@
+lib/trollop.rb 9044f17dc0728c69fe7810411a0542da7bb79b02
+lib/shepherd.rb 7cf198b99d7f49f8e0d301b04655d08a47e82538
+lib/shepherd/cli.rb 707edc9f63d53d6b33cb0ff0b49a32c5ccda8e03
+lib/shepherd/version.rb af2d544bb47a41d7a3e9ccb590b5b1adf5be8f75
+lib/shepherd/command.rb ac6035d9795d90e4d67e2dc87ca10a042d22f8de
+lib/shepherd/commands/init.rb 1a37510664ff306b63c3f7042ab33b959763738c
