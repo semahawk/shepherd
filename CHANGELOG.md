@@ -1,4 +1,4 @@
-# shepherd 0.1.1 (30-06-2011)
+# shepherd 0.1.1 (04-07-2011)
 
 + Ease in creating your own commands!
 + Let be t'e Cli!
