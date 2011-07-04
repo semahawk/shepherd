@@ -43,13 +43,7 @@ You just know, if your project got few kilobytes more on weight, how many more f
 
 ## Features
 
-* Existence, at the moment :D
-
-But the ideas are:
-
-* Files, lines, characters and bytes counting
-* Uh.. Emm...
-* Yeah....
++ Easy own command creation.
 
 ## Oh, NO - a BUG!
 
