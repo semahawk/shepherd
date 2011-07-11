@@ -24,27 +24,31 @@ module Shepherd
 		# Get a list of available commands to be printed. (Almost) every line is separated by new line mark - \n
 		# 
 		# @return [String] list of all available commands
-		def command_list
-			# Get the longest command's name, so we can output it nice 'n' clean
-			# This '+ int' at the end is a distance (in spaces) from the longest
-			#                                            command to descriptions
-			longest = COMMANDS.max_by(&:size).size + 8
+		def commands_list
 			out = ""
-			COMMANDS.each do |cmd|
-				# Calc, calc.
-				spaces = longest - cmd.size
-				# Check if there is a 'desc' method
-				desc = if eval "Command::#{cmd}.new.respond_to? 'desc'"
-					# If there is - execute it
-					eval "Command::#{cmd}.new.desc"
-				else
-					# If there is not
-					"~ no description provided ~"
-				end
-				out << "  " << cmd.downcase.to_s << " " * spaces << desc
-				# If this command is the last one, don't make a new line
-				unless cmd == COMMANDS.last
-					out << "\n"
+			if COMMANDS.empty?
+				out << "  ooops! commands are not here!"
+			else
+				# Get the longest command's name, so we can output it nice 'n' clean
+				# This '+ int' at the end is a distance (in spaces) from the longest
+				#                                            command to descriptions
+				longest = COMMANDS.max_by(&:size).size + 8
+				COMMANDS.each do |cmd|
+					# Calc, calc.
+					spaces = longest - cmd.size
+					# Check if there is a 'desc' method
+					desc = if eval "Command::#{cmd}.new.respond_to? 'desc'"
+						# If there is - execute it
+						eval "Command::#{cmd}.new.desc"
+					else
+						# If there is not
+						"~ no description provided ~"
+					end
+					out << "  " << cmd.downcase.to_s << " " * spaces << desc
+					# If this command is the last one, don't make a new line
+					unless cmd == COMMANDS.last
+						out << "\n"
+					end
 				end
 			end
 			out
@@ -70,7 +74,7 @@ usage: shep [options] <command>
   
 commands are:
   
-  *undah constrrruction, me heartie*
+#{Cli.new.commands_list}
   
   shep <command> --help for more info about specified command
   
