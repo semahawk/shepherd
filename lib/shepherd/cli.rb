@@ -9,7 +9,7 @@ module Shepherd
 		class UnknownCommand < RuntimeError; end
 		
 		# A command which is about to be run
-		attr_writer :command
+		attr_accessor :command
 		
 		# Require *all* command files
 		Dir[File.join(File.dirname(__FILE__), "commands", "*.rb")].each do |all_command_files|
