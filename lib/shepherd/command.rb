@@ -42,7 +42,7 @@ module Shepherd
 	#        end
 	#     end
 	# 
-	# You can of course use for example +OptionParser+, if you want. But.. Trollop[http://trollop.rubyforge.org/] which is AWESOME! THAT's why wise Shepherd is using it ;)
+	# You can of course use for example +OptionParser+, if you want. But.. Trollop[http://trollop.rubyforge.org/] is AWESOME! THAT's why wise Shepherd is using it ;)
 	# 
 	# == Multiple commands 
 	# Also, yau can create more than one command inside one file:

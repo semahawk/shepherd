@@ -26,6 +26,7 @@ module Shepherd
 		# @return [String] list of all available commands
 		def commands_list
 			out = ""
+			# If there are no commands set
 			if COMMANDS.empty?
 				out << "  ooops! commands are not here!"
 			else
@@ -81,17 +82,17 @@ commands are:
 options are:  
 EOB
 
-				opt :version, "Show version and exit", :short => '-v'
-				opt :help, "Show me and exit", :short => '-h'
+				opt :version, "show version and exit", :short => '-v'
+				opt :help, "show me and exit", :short => '-h'
 				
-				stop_on COMMANDS
+				stop_on COMMANDS.collect {|e| e.downcase.to_s}
 			end
 			
 			# Get the command
 			@command = ARGV.shift.capitalize.to_sym
 			
 			begin
-				execute_command
+				execute @command
 			rescue UnknownCommand => e
 				puts e.message
 			rescue Interrupt
@@ -103,11 +104,11 @@ EOB
 		# 
 		# @return [Object] command to execute
 		# @raise [UnknownCommand] if there is no such a command
-		def execute_command
+		def execute command
 			if command_exists?
-				eval "Command::#{@command}.new.init"
+				eval "Command::#{command}.new.init"
 			else
-				raise UnknownCommand, "Error: unknown command '#{@command.downcase.to_s}'.\nTry --help for help."
+				raise UnknownCommand, "Error: unknown command '#{command.downcase.to_s}'.\nTry --help for help."
 			end
 		end # execute_command:Method
 	end # Cli:Class
