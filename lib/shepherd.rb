@@ -1,7 +1,8 @@
 module Shepherd
 	ROOT = File.expand_path(File.dirname(__FILE__))
 	
-	autoload :Cli,        "#{ROOT}/shepherd/cli"
 	autoload :Command,    "#{ROOT}/shepherd/command"
+	autoload :Db,         "#{ROOT}/shepherd/db"
+	autoload :Cli,        "#{ROOT}/shepherd/cli"
 	autoload :Version,    "#{ROOT}/shepherd/version"
 end

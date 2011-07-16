@@ -85,7 +85,7 @@ EOB
 				opt :version, "show version and exit", :short => '-v'
 				opt :help, "show me and exit", :short => '-h'
 				
-				stop_on COMMANDS.collect {|e| e.downcase.to_s}
+				stop_on COMMANDS.collect { |e| e.downcase.to_s }
 			end
 			
 			# Get the command
@@ -93,10 +93,16 @@ EOB
 			
 			begin
 				execute @command
+				exit 0
 			rescue UnknownCommand => e
 				puts e.message
+				exit 1
+			rescue Db::DatabaseNotFound => e
+				puts e.message
+				exit 1
 			rescue Interrupt
 				puts "\n\n~> interrupted"
+				exit 1
 			end
 		end # run!:Method
 		
