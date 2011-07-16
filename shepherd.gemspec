@@ -14,6 +14,8 @@ Gem::Specification.new do |s|
   s.description = %q{Check if/how your projects are growing up!}
   s.date        = Time.now.strftime('%Y-%m-%d')
 
+  s.add_dependency('sqlite3', '~> 1.3.0')
+
   s.add_development_dependency('yard', '~> 0.7.2')
   s.add_development_dependency('rspec', '~> 2.6.0')
 
