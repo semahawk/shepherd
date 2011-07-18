@@ -19,23 +19,24 @@ EOB
 			# use this top directory name unless --name is set
 			@state[:name] = @opts[:name] ? @opts[:name] : @opts[:path].split("/").last
 			
-			#Shepherd::Counter.new(@state[:path]) do |count|
-				@state[:files] = 8#count.files
-				@state[:lines] = 16#count.lines
-				@state[:chars] = 32#count.chars
-				@state[:bytes] = 64#count.bytes
-			#end
+			Shepherd::Counter.new(@state[:path]) do |count|
+				@state[:files] = count.files
+				@state[:lines] = count.lines
+				@state[:chars] = count.chars
+				@state[:bytes] = count.bytes
+				@state[:rawbytes] = count.rawbytes
+			end
 			
 			puts "Our brave-hearted Shepherd initializes a new project!
 
    path: \e[1;34m#{@state[:path]}\e[0;0m
    name: \e[1;32m#{@state[:name]}\e[0;0m
   
-  state: #{@state[:files]} files
+  state: #{@state[:files].size} files
          #{@state[:lines]} lines
          #{@state[:chars]} chars
          
-         30 KB (#{@state[:bytes]} bytes)
+         #{@state[:bytes]} (#{@state[:rawbytes]} bytes)
   
 " unless @opts[:quiet]
 
