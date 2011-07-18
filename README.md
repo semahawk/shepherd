@@ -45,6 +45,12 @@ You just know, if your project got few kilobytes more on weight, how many more f
 
 + Easy own command creation.
 
+## Dependencies
+
++ [sqlite3](http://rubygems.org/gems/sqlite3) (~> 1.3.0)
+
+Shepherd also uses `cat` and `wc` UNIX commands, so if you are on UNIX(-like) system there should be no problem.
+
 ## Oh, NO - a BUG!
 
 If you encounter some bug, just simple say "Hello!" to him, tickle him a bit and then just please let me know, by adding an [issue](http://github.com/semahawk/shepherd/issues). Thank you ;)
