@@ -43,7 +43,7 @@ module Shepherd
 						eval "Command::#{cmd}.new.desc"
 					else
 						# If there is not
-						"~ no description provided ~"
+						"---"
 					end
 					out << "  " << cmd.downcase.to_s << " " * spaces << desc
 					# If this command is the last one, don't make a new line
