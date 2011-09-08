@@ -77,7 +77,7 @@ commands are:
   
 #{Cli.new.commands_list}
   
-  shep <command> --help for more info about specified command
+  shep <command> --help/-h for more info about specified command
   
 options are:  
 EOB
