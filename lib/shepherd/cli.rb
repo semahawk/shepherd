@@ -69,7 +69,7 @@ module Shepherd
 			# 
 			# @return [Hash] array full of options
 			$opts = Trollop::options do
-				version "Shepherd be t'e version #{Version::STRING}"
+				version "shepherd version #{Version::STRING}"
 				banner <<-EOB
 usage: shep [options] <command>
   
