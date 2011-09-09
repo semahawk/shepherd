@@ -101,7 +101,7 @@ EOB
 				puts e.message
 				exit 1
 			rescue Interrupt
-				puts "\n\n~> interrupted"
+				puts "\n\n!# interrupted"
 				exit 1
 			end
 		end # run!:Method
