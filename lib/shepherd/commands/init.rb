@@ -5,6 +5,9 @@ module Shepherd::Command
 				banner <<-EOB
 usage: shep [options] init [-h|--help]
 
+examples:
+  
+
 options are:
 EOB
 				opt :path, "a root path to the project", :default => Dir.pwd
@@ -19,29 +22,34 @@ EOB
 			# use this top directory name unless --name is set
 			@state[:name] = @opts[:name] ? @opts[:name] : @opts[:path].split("/").last
 			
+			# let's check if there already is a sheep with the same path and/or name
+			res = Shepherd::Db.new.get_first_row "select * from sheeps where name = ? or path = ?", @state[:name], @state[:path]
+			if res
+				puts "[shep] exit 4: there already is a sheep with that name and/or path" unless @opts[:quiet]
+				exit 4
+			end
+			
 			Shepherd::Counter.new(@state[:path]) do |count|
 				@state[:files] = count.files
 				@state[:lines] = count.lines
 				@state[:chars] = count.chars
 				@state[:bytes] = count.bytes
-				@state[:rawbytes] = count.rawbytes
 			end
 			
-			puts "Our brave-hearted Shepherd initializes a new project!
+			puts "Our brave-hearted Shepherd gained a new sheep!
 
    path: \e[1;34m#{@state[:path]}\e[0;0m
    name: \e[1;32m#{@state[:name]}\e[0;0m
   
-  state: #{@state[:files].size} files
+  state: #{@state[:files]} files
          #{@state[:lines]} lines
          #{@state[:chars]} chars
          
-         #{@state[:bytes]} (#{@state[:rawbytes]} bytes)
+         #{Shepherd::Utils.nice_bytes(@state[:bytes])} (#{@state[:bytes]} bytes)
   
 " unless @opts[:quiet]
-
-			# TODO: save to database
-			# Shepherd::Db.new.execute "inserting query"
+			
+			Shepherd::Db.new.execute "insert into sheeps(id, name, path, files, lines, chars, bytes) values(NULL, ?, ?, ?, ?, ?, ?)", @state[:name], @state[:path], @state[:files], @state[:lines], @state[:chars], @state[:bytes]
 		end
 		
 		def desc

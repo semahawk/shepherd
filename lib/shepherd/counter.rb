@@ -50,34 +50,6 @@ module Shepherd
 			yield self if block_given?
 		end
 		
-		# Convert bytes into more human readable format.
-		# Found nice resolution here[http://www.ruby-forum.com/topic/119703] which was originally written by {Jeff Emminger}[http://www.ruby-forum.com/user/show/jemminger] and I just add this part to automaticly set the unit. Thank you!
-		# 
-		# @param [Integer] number a number to be formatted
-		# @return [String] a formatted number
-		def nice_bytes number
-			units = {:b => 1,
-						:kb => 2**10,
-						:mb => 2**20,
-						:gb => 2**30,
-						:tb => 2**40}
-			
-			unit = :b
-			case number
-				when 1...2**10
-					unit = :b
-				when 2**10...2**20
-					unit = :kb
-				when 2**20...2**30
-					unit = :mb
-				when 2**30...2**40
-					unit = :gb
-				when 2**40...2**50
-					unit = :tb
-			end
-			"#{sprintf("%.#{0}f", number / units[unit.to_s.downcase.to_sym])} #{unit.to_s.upcase}"
-		end
-		
 		# Count the files (excluding dotfiles).
 		# 
 		# @return [Array] list of all files (dotfiles are not included)
@@ -94,7 +66,7 @@ module Shepherd
 					@files << path
 				end
 			end
-			@files
+			@files.size
 		end
 		
 		# Count the lines.
@@ -122,19 +94,12 @@ module Shepherd
 		# Count the bytes. This *wont* be converted all the time.
 		# 
 		# @return [Integer] bytes amount
-		def rawbytes
-			@rawbytes = 0
-			@files.each do |file|
-				@rawbytes += File.new("#{file}").size
-			end
-			@rawbytes
-		end
-		
-		# Count the bytes. This *will* be formatted into something like: 2898 KB
-		# 
-		# @return [String] formatted bytes
 		def bytes
-			@bytes = nice_bytes rawbytes
+			@bytes = 0
+			@files.each do |file|
+				@bytes += File.new("#{file}").size
+			end
+			@bytes
 		end
 	end
 end

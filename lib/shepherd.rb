@@ -15,6 +15,7 @@ module Shepherd
 	# Check if the setup was once done
 	if !Dir.exists? "#{Dir.home}/.shepherd"
 		# Setup was not done so we'll do it, but...
+		Setup.new
 		sleep 0.5
 		puts "Hello there!"
 		sleep 2 
@@ -52,6 +53,6 @@ module Shepherd
 		puts "*click*\n\n"
 		sleep 0.5
 		# Ghehe :)
-		Setup.new
+		# Setup.new
 	end
 end

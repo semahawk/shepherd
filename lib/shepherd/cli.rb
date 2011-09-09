@@ -3,6 +3,24 @@ require "trollop"
 module Shepherd	
 	
 	# Command Line Interface class
+	# 
+	# === Usage
+	# 
+	#     module Shepherd
+	#        Cli.new.run!
+	#     end
+	# 
+	# or
+	# 
+	#     Shepherd::Cli.new.run!
+	# 
+	# === Exit statuses
+	# - *0* Everything went just fine :)
+	# - *1* User said ^C :]
+	# - *2* User wanted a UnknownCommand
+	# - *3* The database file was not found
+	# - *4* User wanted to init another sheep/project with the same name and/or path
+	# 
 	class Cli
 		
 		# Kinda self explanatory
@@ -12,6 +30,7 @@ module Shepherd
 		attr_accessor :command
 		
 		# Require *all* command files
+		# TODO: Is it possible to moke it use autoload? It'd be cool! :)
 		Dir[File.join(File.dirname(__FILE__), "commands", "*.rb")].each do |all_command_files|
 			require all_command_files
 		end
@@ -53,7 +72,7 @@ module Shepherd
 				end
 			end
 			out
-		end
+		end # commands_list:Method
 		
 		# Check if command really exists
 		# 
@@ -96,10 +115,10 @@ EOB
 				exit 0
 			rescue UnknownCommand => e
 				puts e.message
-				exit 1
+				exit 2
 			rescue Db::DatabaseNotFound => e
 				puts e.message
-				exit 1
+				exit 3
 			rescue Interrupt
 				puts "\n\n!# interrupted"
 				exit 1
