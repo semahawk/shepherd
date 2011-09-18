@@ -11,7 +11,8 @@ create table if not exists sheeps (
 	files integer(6) not null,
 	lines integer(7) not null,
 	chars integer(10) not null,
-	bytes integer(10) not null
+	bytes integer(10) not null,
+	inited_at datetime not null
 );
 EOS
 

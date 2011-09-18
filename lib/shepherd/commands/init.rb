@@ -6,7 +6,13 @@ module Shepherd::Command
 usage: shep [options] init [-h|--help]
 
 examples:
+  cd /my/awesome/program
+  shep init                              # name of that sheep would be 'program'
   
+  shep init --path /my/awesome/program   # here as well
+  
+  shep init --path /my/awesome/program\\
+            --name yay                   # it's would be 'yay'
 
 options are:
 EOB
@@ -22,10 +28,16 @@ EOB
 			# use this top directory name unless --name is set
 			@state[:name] = @opts[:name] ? @opts[:name] : @opts[:path].split("/").last
 			
+			# let's check if the --path exists
+			if !Dir.exists? @state[:path]
+				puts "[shep] exit 5: no such directory: #{@state[:path]}"
+				exit 5
+			end
+			
 			# let's check if there already is a sheep with the same path and/or name
 			res = Shepherd::Db.new.get_first_row "select * from sheeps where name = ? or path = ?", @state[:name], @state[:path]
 			if res
-				puts "[shep] exit 4: there already is a sheep with that name and/or path" unless @opts[:quiet]
+				puts "[shep] exit 4: there already is a sheep with that name and/or path"
 				exit 4
 			end
 			
@@ -49,7 +61,7 @@ EOB
   
 " unless @opts[:quiet]
 			
-			Shepherd::Db.new.execute "insert into sheeps(id, name, path, files, lines, chars, bytes) values(NULL, ?, ?, ?, ?, ?, ?)", @state[:name], @state[:path], @state[:files], @state[:lines], @state[:chars], @state[:bytes]
+			Shepherd::Db.new.execute "insert into sheeps(id, name, path, files, lines, chars, bytes, inited_at) values(NULL, ?, ?, ?, ?, ?, ?, datetime())", @state[:name], @state[:path], @state[:files], @state[:lines], @state[:chars], @state[:bytes]
 		end
 		
 		def desc

@@ -15,11 +15,14 @@ module Shepherd
 	#     Shepherd::Cli.new.run!
 	# 
 	# === Exit statuses
+	# 
 	# - *0* Everything went just fine :)
 	# - *1* User said ^C :]
 	# - *2* User wanted a UnknownCommand
 	# - *3* The database file was not found
 	# - *4* User wanted to init another sheep/project with the same name and/or path
+	# - *5* User wanted to init a project in a path that doesn't exist
+	# - *6* User wanted to see a sheep that was not inited
 	# 
 	class Cli
 		
@@ -30,7 +33,7 @@ module Shepherd
 		attr_accessor :command
 		
 		# Require *all* command files
-		# TODO: Is it possible to moke it use autoload? It'd be cool! :)
+		# TODO: Is it possible to make it use autoload? It'd be cool! :)
 		Dir[File.join(File.dirname(__FILE__), "commands", "*.rb")].each do |all_command_files|
 			require all_command_files
 		end

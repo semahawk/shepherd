@@ -45,3 +45,16 @@ module Shepherd
 		end
 	end
 end
+
+class Integer
+	def to_nice
+		s = self.to_s
+
+		if s.include? ?.
+			pre, post = s.split '.'
+			"#{pre.reverse.gsub( /\d{3}(?=\d)/, '\&,' ).reverse}.#{post}"
+		else
+			s.reverse.gsub( /\d{3}(?=\d)/, '\&.' ).reverse
+		end
+	end
+end
