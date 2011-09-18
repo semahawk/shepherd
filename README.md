@@ -24,11 +24,11 @@ Shepherd
 	</tr>
 	<tr>
 		<td><b>Latest version</b></td>
-		<td>0.1.2</td>
+		<td>0.1.3</td>
 	</tr>
 	<tr>
 		<td><b>Release date</b></td>
-		<td>July 18th, 2011</td>
+		<td>September 18th, 2011</td>
 	</tr>
 	<tr>
 		<td><b>Stage</b></td>
