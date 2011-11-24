@@ -3,7 +3,7 @@ module Shepherd::Command
 		def init
 			@opts = Trollop::options do
 				banner <<-EOB
-usage: shep [options] init [-h|--help]
+usage: shep init [options] [-h|--help]
 
 examples:
   cd /my/awesome/program
