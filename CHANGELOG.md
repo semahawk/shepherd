@@ -1,3 +1,7 @@
+# shepherd 0.1.4 (24-11-2011)
+
++ Ability to `rm` some sheeps.
+
 # shepherd 0.1.3 (18-09-2011)
 
 + Now we can `show` some sheeps!
