@@ -19,16 +19,12 @@ Shepherd
 		<td>MIT</td>
 	</tr>
 	<tr>
-		<td> </td>		
-		<td> </td>		
-	</tr>
-	<tr>
 		<td><b>Latest version</b></td>
-		<td>0.1.4</td>
+		<td>0.2.0</td>
 	</tr>
 	<tr>
 		<td><b>Release date</b></td>
-		<td>November 24th, 2011</td>
+		<td>January 12th, 2011</td>
 	</tr>
 	<tr>
 		<td><b>Stage</b></td>
