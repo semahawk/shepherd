@@ -3,19 +3,19 @@ module Shepherd::Command
     def init
       @opts = Trollop::options do
         banner <<-EOB
-usage: shep check [id] [options]
+usage: shep check [sheep] [options]
 EOB
         opt :help, "show me and exit", :short => '-h'
       end
       
-      if id = ARGV.shift
-        update_one id.to_i
+      if name = ARGV.shift
+        check_one name
       else
-        update_all
+        check_all
       end
     end
 
-    def update_all
+    def check_all
       n = 0
       Shepherd::Db.new.execute "select * from sheeps" do |sheep|
         n += 1
@@ -25,10 +25,10 @@ EOB
       end
     end
 
-    def update_one id
+    def check_one name
       out = ""
 
-      sheep = Shepherd::Db.new.get_first_row "select * from sheeps where id = ?", id
+      sheep = Shepherd::Db.new.get_first_row "select * from sheeps where name = ?", name
       if sheep
         out += "   name: \e[1;35m#{sheep[1]}\e[0;0m from \e[1;34m#{sheep[2]}\e[0;0m\n\n"
         Shepherd::Counter.new(sheep[2]) do |count|
