@@ -3,6 +3,7 @@ require "fileutils"
 module Shepherd
 	class Setup
 		def initialize
+      puts "[shep] performing a setup:\n\n"
 			@schema = <<-EOS
 create table if not exists sheeps (
 	id integer primary key autoincrement,
@@ -12,7 +13,8 @@ create table if not exists sheeps (
 	lines integer(7) not null,
 	chars integer(10) not null,
 	bytes integer(10) not null,
-	inited_at datetime not null
+	inited_at datetime not null,
+  updated_at datetime not null
 );
 EOS
 

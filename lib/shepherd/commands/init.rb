@@ -53,15 +53,15 @@ EOB
    path: \e[1;34m#{@state[:path]}\e[0;0m
    name: \e[1;32m#{@state[:name]}\e[0;0m
   
-  state: #{@state[:files]} files
-         #{@state[:lines]} lines
-         #{@state[:chars]} chars
+  state: #{@state[:files].to_nice} files
+         #{@state[:lines].to_nice} lines
+         #{@state[:chars].to_nice} chars
          
-         #{Shepherd::Utils.nice_bytes(@state[:bytes])} (#{@state[:bytes]} bytes)
+         #{Shepherd::Utils.nice_bytes(@state[:bytes])} (#{@state[:bytes].to_nice} bytes)
   
 " unless @opts[:quiet]
 			
-			Shepherd::Db.new.execute "insert into sheeps(id, name, path, files, lines, chars, bytes, inited_at) values(NULL, ?, ?, ?, ?, ?, ?, datetime())", @state[:name], @state[:path], @state[:files], @state[:lines], @state[:chars], @state[:bytes]
+			Shepherd::Db.new.execute "insert into sheeps(id, name, path, files, lines, chars, bytes, inited_at, updated_at) values(NULL, ?, ?, ?, ?, ?, ?, datetime(), datetime())", @state[:name], @state[:path], @state[:files], @state[:lines], @state[:chars], @state[:bytes]
 		end
 		
 		def desc
