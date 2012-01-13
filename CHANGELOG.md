@@ -1,3 +1,12 @@
+# shepherd 0.3.0 (13-12-2011)
+
++ Made the `update` command and added the `updated_at` column in the database.
++ `check` command finds the sheep by its name, not id.
+
+# shepherd 0.2.0 (12-12-2011)
+
++ `check` command works.
+
 # shepherd 0.1.4 (24-11-2011)
 
 + Ability to `rm` some sheeps.
