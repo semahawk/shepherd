@@ -36,6 +36,7 @@ EOB
    #{Shepherd::Utils.nice_bytes(sheep[6])} (#{sheep[6].to_nice} bytes)
    
    initialized at #{sheep[7]}
+       updated at #{sheep[8]}
    
 EOP
 					else

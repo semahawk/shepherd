@@ -65,12 +65,14 @@ EOB
           bytes = count.bytes - sheep[6]
           if bytes < 0
             bytes = bytes.to_s[1..-1].to_i
-            out += "         \e[1;34m#{Shepherd::Utils.nice_bytes count.bytes}\e[0;0m bytes (#{Shepherd::Utils.nice_bytes sheep[6]} \e[1;31m- #{Shepherd::Utils.nice_bytes bytes}\e[0;0m)"
+            out += "         \e[1;34m#{Shepherd::Utils.nice_bytes count.bytes}\e[0;0m bytes (#{Shepherd::Utils.nice_bytes sheep[6]} \e[1;31m- #{Shepherd::Utils.nice_bytes bytes}\e[0;0m)\n"
           elsif bytes == 0
-            out += "         \e[1;34m#{Shepherd::Utils.nice_bytes count.bytes}\e[0;0m"
+            out += "         \e[1;34m#{Shepherd::Utils.nice_bytes count.bytes}\e[0;0m\n"
           else
-            out += "         \e[1;34m#{Shepherd::Utils.nice_bytes count.bytes}\e[0;0m bytes (#{Shepherd::Utils.nice_bytes sheep[6]} \e[1;32m+ #{Shepherd::Utils.nice_bytes bytes}\e[0;0m)"
+            out += "         \e[1;34m#{Shepherd::Utils.nice_bytes count.bytes}\e[0;0m bytes (#{Shepherd::Utils.nice_bytes sheep[6]} \e[1;32m+ #{Shepherd::Utils.nice_bytes bytes}\e[0;0m)\n"
           end
+
+          out += "\n  since: #{sheep[8]}"
 
           puts "#{out}\n\n"
         end
