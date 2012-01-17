@@ -2,34 +2,34 @@ Shepherd
 ========
 
 <table>
-	<tr>
-		<td><b>Homepage</b></td>
-		<td><a href="http://semahawk.github.com/shepherd">http://semahawk.github.com/shepherd</a></td>
-	</tr>
-	<tr>
-		<td><b>Author</b></td>
-		<td>Szymon Urbaś (szymon dot urbas at yahoo dot com)</td>
-	</tr>
-	<tr>
-		<td><b>Copyright</b></td>
-		<td>2011</td>
-	</tr>
-	<tr>
-		<td><b>License</b></td>
-		<td>MIT</td>
-	</tr>
-	<tr>
-		<td><b>Latest version</b></td>
-		<td>0.2.0</td>
-	</tr>
-	<tr>
-		<td><b>Release date</b></td>
-		<td>January 12th, 2011</td>
-	</tr>
-	<tr>
-		<td><b>Stage</b></td>
-		<td><i>Development</i></td>
-	</tr>
+  <tr>
+    <td><b>Homepage</b></td>
+    <td><a href="http://semahawk.github.com/shepherd">http://semahawk.github.com/shepherd</a></td>
+  </tr>
+  <tr>
+    <td><b>Author</b></td>
+    <td>Szymon Urbaś (szymon dot urbas at yahoo dot com)</td>
+  </tr>
+  <tr>
+    <td><b>Copyright</b></td>
+    <td>2011 - 2012</td>
+  </tr>
+  <tr>
+    <td><b>License</b></td>
+    <td>MIT</td>
+  </tr>
+  <tr>
+    <td><b>Latest version</b></td>
+    <td>0.3.1</td>
+  </tr>
+  <tr>
+    <td><b>Release date</b></td>
+    <td>January 17th, 2012</td>
+  </tr>
+  <tr>
+    <td><b>Stage</b></td>
+    <td><i>Development</i></td>
+  </tr>
 </table>
 
 ## A bit about
@@ -39,6 +39,11 @@ You just know, if your project got few kilobytes more on weight, how many more f
 
 ## Features
 
++ Files counting
++ Lines counting
++ Chars counting
++ Bytes counting
++ Project's weight in KB, MB ..
 + Easy own command creation.
 
 ## Dependencies
